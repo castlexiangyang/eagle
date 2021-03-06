@@ -1,0 +1,12 @@
+language: go
+go:
+  - "1.13"
+services:
+  - docker
+
+install:
+  - make image-dev
+
+script:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - make push-dev
